@@ -1,7 +1,6 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class birdscript : MonoBehaviour {
 
@@ -10,13 +9,17 @@ public class birdscript : MonoBehaviour {
     public Rigidbody2D rigidbody2;
     public GameObject nextBird;
     public GameObject loseScreen;
+    public Text birdAmount;
+    public static int birdCount = 3;
     // Use this for initialization
-	void Start () {
-		
-	}
+    void Start ()
+    {
+        birdAmount.text = "Birds left: " + birdCount;
+    }
 	
 	// Update is called once per frame
-	void Update () {
+	void Update ()
+    {
 		if(clicked == true)
         {
             Vector3 mousePos = Input.mousePosition;
@@ -40,6 +43,8 @@ public class birdscript : MonoBehaviour {
         yield return new WaitForSeconds(0.15f);
         GetComponent<SpringJoint2D>().enabled = false;
         this.enabled = false;
+        birdCount--;
+        birdAmount.text = "Birds left: " + birdCount;
         yield return new WaitForSeconds(2f);
         if (nextBird != null)
         {
@@ -47,10 +52,9 @@ public class birdscript : MonoBehaviour {
         }
         else
         {
+            yield return new WaitForSeconds(5f);
             loseScreen.SetActive(true);
-            yield return new WaitForSeconds(2f);
             coinscript.coinCount = 0;
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
     }
 }

@@ -92,6 +92,7 @@ MonoBehaviour:
   rigidbody2: {fileID: 50561875233010126}
   cam: {fileID: 0}
   winScreen: {fileID: 0}
+  coinAmount: {fileID: 0}
 --- !u!212 &212470712615002372
 SpriteRenderer:
   m_ObjectHideFlags: 1
