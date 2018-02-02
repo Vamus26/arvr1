@@ -6,8 +6,9 @@ public class birdscript : MonoBehaviour {
 
     private bool clicked = false;
     public Camera cam;
-    public Rigidbody2D rigidbody;
-	// Use this for initialization
+    public Rigidbody2D rigidbody2;
+    public GameObject nextBird;
+    // Use this for initialization
 	void Start () {
 		
 	}
@@ -17,18 +18,18 @@ public class birdscript : MonoBehaviour {
 		if(clicked == true)
         {
             Vector3 mousePos = Input.mousePosition;
-            rigidbody.position = cam.ScreenToWorldPoint(new Vector3(mousePos.x, mousePos.y, 10));
+            rigidbody2.position = cam.ScreenToWorldPoint(new Vector3(mousePos.x, mousePos.y, 10));
         }
 	}
     private void OnMouseDown()
     {
         clicked = true;
-        rigidbody.isKinematic = true;
+        rigidbody2.isKinematic = true;
     }
     private void OnMouseUp()
     {
         clicked = false;
-        rigidbody.isKinematic = false;
+        rigidbody2.isKinematic = false;
         StartCoroutine(Release());
     }
 
@@ -36,5 +37,11 @@ public class birdscript : MonoBehaviour {
     {
         yield return new WaitForSeconds(0.15f);
         GetComponent<SpringJoint2D>().enabled = false;
+        this.enabled = false;
+        yield return new WaitForSeconds(2f);
+        if (nextBird != null)
+        {
+            nextBird.SetActive(true);
+        }
     }
 }

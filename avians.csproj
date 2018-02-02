@@ -295,6 +295,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\birdscript.cs" />
+    <Compile Include="Assets\coinscript.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Pixel Bird\Read Me.txt" />
