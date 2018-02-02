@@ -25,7 +25,7 @@ GameObject:
   - component: {fileID: 50561875233010126}
   m_Layer: 1
   m_Name: Item_Coin_01
-  m_TagString: Untagged
+  m_TagString: coin
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -91,6 +91,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rigidbody2: {fileID: 50561875233010126}
   cam: {fileID: 0}
+  winScreen: {fileID: 0}
 --- !u!212 &212470712615002372
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class birdscript : MonoBehaviour {
 
@@ -8,6 +9,7 @@ public class birdscript : MonoBehaviour {
     public Camera cam;
     public Rigidbody2D rigidbody2;
     public GameObject nextBird;
+    public GameObject loseScreen;
     // Use this for initialization
 	void Start () {
 		
@@ -42,6 +44,13 @@ public class birdscript : MonoBehaviour {
         if (nextBird != null)
         {
             nextBird.SetActive(true);
+        }
+        else
+        {
+            loseScreen.SetActive(true);
+            yield return new WaitForSeconds(2f);
+            coinscript.coinCount = 0;
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
     }
 }
